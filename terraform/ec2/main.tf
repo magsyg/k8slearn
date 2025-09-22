@@ -29,4 +29,5 @@ resource "aws_instance" "control_plane" {
     inline = [
       "sudo bash k8scontrolPlaneSetup",
     ]
+    }
 }
