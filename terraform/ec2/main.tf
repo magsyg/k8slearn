@@ -14,7 +14,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "example" {
+resource "aws_instance" "control_plane" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.medium"
 
