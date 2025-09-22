@@ -10,6 +10,10 @@ jobs:
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./terraform
     env:
       TF_IN_AUTOMATION: true
       AWS_REGION: eu-central-1
@@ -26,20 +30,16 @@ jobs:
           aws-region: eu-central-1
 
       - name: Terraform Init
-        working-directory: terraform
         run: terraform init
 
       - name: Terraform Validate
-        working-directory: terraform
         run: terraform validate
 
       - name: Terraform Plan (dev)
         id: plan
-        working-directory: terraform
         run: terraform plan
 
       - name: Show Plan
-        working-directory: terraform
         run: terraform show -no-color plan.out | tee plan.txt
 
       - name: Comment plan on PR
