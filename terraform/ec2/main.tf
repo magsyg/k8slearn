@@ -18,8 +18,8 @@ resource "aws_instance" "control_plane" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.medium"
 
-  #subnet_id     = var.subnet_id
-  #security_groups = [var.control_plane_sg_id]
+  subnet_id     = var.subnet_id
+  security_groups = [var.control_plane_sg_id]
   tags = {
     Name = "${var.name_prefix}-control-plane"
   }
