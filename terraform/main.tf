@@ -8,10 +8,10 @@ terraform {
 }
 
 module "ec2" {
-    source      = "./ec2"
-    name_prefix = var.prefix
-    #control_plane_sg_id = module.security.control_plane_sg.id
-    #subnet_id = module.network.vpc_public_subnet.id
+  source      = "./ec2"
+  name_prefix = var.prefix
+  #control_plane_sg_id = module.security.control_plane_sg.id
+  #subnet_id = module.network.vpc_public_subnet.id
 }
 
 /*
@@ -31,9 +31,9 @@ module "security" {
 
 terraform {
   backend "s3" {
-    bucket = "k8slearn-bucket"
-    key    = "terraform.state"
-    region = "eu-central-1"
+    bucket       = "k8slearn-bucket"
+    key          = "terraform.state"
+    region       = "eu-central-1"
     use_lockfile = true
   }
 }
