@@ -31,7 +31,7 @@ module "security" {
 
 terraform {
   backend "s3" {
-    bucket = "${var.prefix}-bucket"
+    bucket = "k8slearn-bucket"
     key    = "terraform.state"
     region = "eu-central-1"
     use_lockfile = true
