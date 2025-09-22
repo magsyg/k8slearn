@@ -15,7 +15,7 @@ resource "aws_vpc_security_group_ingress_rule" "ingress_controlplane_https" {
 resource "aws_vpc_security_group_ingress_rule" "ingress_controlplane_ssh" {
   // can get input on frontend port, from anywhere
   security_group_id = aws_security_group.control_plane_sg.id
-  ip_protocol       = "ssh"
+  ip_protocol       = "tcp"
   from_port         = "22"
   to_port           =  "22"
   cidr_ipv4         = "0.0.0.0/0"
