@@ -1,0 +1,28 @@
+name: cd-apply
+on:
+  push:
+    branches: 
+        - main
+
+jobs:
+  apply:
+    permissions:
+      id-token: write
+      contents: read
+    runs-on: ubuntu-latest
+    env:
+      TF_IN_AUTOMATION: true
+      AWS_REGION: eu-central-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: eu-central-1
+      - name: Terraform Init
+        working-directory: ${{ terraform }}
+        run: terraform init
+      - name: Terraform Apply
+        working-directory: ${{ terraform }}
+        run: terraform apply -auto-approve -lock=false
