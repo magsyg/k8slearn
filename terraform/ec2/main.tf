@@ -23,7 +23,7 @@ resource "aws_instance" "control_plane" {
   tags = {
     Name = "${var.name_prefix}-control-plane"
   }
-  user_data = file("../../k8scontrolPlaneSetup")
+  user_data = file("./k8scontrolPlaneSetup")
 
     provisioner "remote-exec" {
     inline = [
