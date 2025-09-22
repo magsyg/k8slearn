@@ -38,11 +38,3 @@ jobs:
       - name: Terraform Plan (dev)
         id: plan
         run: terraform plan
-
-      - name: Show Plan
-        run: terraform show -no-color plan.out | tee plan.txt
-
-      - name: Comment plan on PR
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          path: terraform/plan.txt
