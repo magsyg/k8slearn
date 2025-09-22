@@ -10,11 +10,10 @@ terraform {
 module "ec2" {
   source      = "./ec2"
   name_prefix = var.prefix
-  #control_plane_sg_id = module.security.control_plane_sg.id
-  #subnet_id = module.network.vpc_public_subnet.id
+  control_plane_sg_id = module.security.control_plane_sg.id
+  subnet_id = module.network.vpc_public_subnet.id
 }
 
-/*
 module "network" {
     source = "./network"
     name_prefix = var.prefix
@@ -26,8 +25,6 @@ module "security" {
     name_prefix = var.prefix
     main_vpc_id = module.network.main_vpc_id
 }
-*/
-
 
 terraform {
   backend "s3" {
