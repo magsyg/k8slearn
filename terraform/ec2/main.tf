@@ -24,11 +24,14 @@ resource "aws_instance" "control_plane" {
     Name = "${var.name_prefix}-control-plane"
   }
   /*
-   user_data = file("${path.module}/k8scontrolPlaneSetup")
+  provisioner "file" {
+    
+  }
 
-    provisioner "remote-exec" {
+  provisioner "remote-exec" {
     inline = [
       "sudo bash k8scontrolPlaneSetup",
     ]
-    }*/
+  }
+  */
 }
