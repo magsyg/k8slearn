@@ -21,8 +21,8 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: eu-central-1
       - name: Terraform Init
-        working-directory: ${{ terraform }}
+        working-directory: terraform
         run: terraform init
       - name: Terraform Apply
-        working-directory: ${{ terraform }}
+        working-directory: terraform
         run: terraform apply -auto-approve -lock=false
